@@ -1,14 +1,14 @@
 	var url = 'https://restcountries.eu/rest/v2/name/';
-	var urlCapital = 'https://restcountries.eu/rest/v2/capital/';
-	var urlLanguage = 'https://restcountries.eu/rest/v2/lang/';
+	//var urlCapital = 'https://restcountries.eu/rest/v2/capital/';
+	//var urlLanguage = 'https://restcountries.eu/rest/v2/lang/';
 
 	var countriesList = $('#countries');
-	var capitalList = $('#capitals');
-	var languagesList = $('#languages');
+	//var capitalList = $('#capitals');
+	//var languagesList = $('#languages');
 
 	$('#search').click(searchCountries);
-	$('#search').click(searchCapitals);
-	$('#search').click(searchLanguages);
+	//$('#search').click(searchCapitals);
+	//$('#search').click(searchLanguages);
 
 	function searchCountries() {
 		var countryName = $('#country-name').val();
@@ -22,7 +22,16 @@
 		});
 	}
 
-	function searchCapitals() {
+	function showCountriesList(resp) {
+		countriesList.empty();
+
+		resp.forEach(function(item) {
+			$('<li>').text(item.name).appendTo(countriesList);
+
+		});
+	}
+
+	/*function searchCapitals() {
 		var capitalName = $('#country-name').val();
 
 		if (!capitalName.length) capitalName = 'Warsaw';
@@ -46,14 +55,7 @@
 		});
 	}
 
-	function showCountriesList(resp) {
-		countriesList.empty();
 
-		resp.forEach(function(item) {
-			$('<li>').text(item.name).appendTo(countriesList);
-
-		});
-	}
 
 	function showCapitalList(resp) {
 		capitalList.empty();
@@ -69,4 +71,4 @@
 		resp.forEach(function(item) {
 			$('<li>').text(item.name).appendTo(languagesList);
 		});
-	}
+	}*/
